@@ -1,0 +1,20 @@
+div {
+  .blank {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      color: #121212;
+      background-color: #2dd4bf;
+      border-radius: 2px;
+
+      padding: 4px 6px;
+
+      font-weight: 600;
+    }
+  }
+}
