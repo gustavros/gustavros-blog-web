@@ -35,4 +35,4 @@ O projeto ainda está finalizado porém penso em adicionar com as seguintes melh
 
 > Também usei o Prettier e Codeium para ajudar na formatação/ Autocomplete.
 
-[⬆ Voltar ao topo](#gustavos-blog)<br>
+[⬆ Voltar ao topo](#gustavos-blog-)<br>
