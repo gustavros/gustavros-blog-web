@@ -1,5 +1,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Editor } from "../../components/Editor/Editor";
 
 import styles from "./editpost.module.scss";
@@ -45,6 +46,8 @@ export const EditPost = () => {
 
     if (response.ok) {
       setRedirect(true);
+    } else {
+      toast.error(`You don't have permission to edit this post.`);
     }
   }
 

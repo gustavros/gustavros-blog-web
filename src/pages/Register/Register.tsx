@@ -1,6 +1,6 @@
 import styles from "./register.module.scss";
 import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const Register = () => {
@@ -12,8 +12,7 @@ export const Register = () => {
     event.preventDefault();
 
     setLoading(true);
-    console.log("loading true");
-    const response = await fetch(`${import.meta.env.VITE_PORT}/post`, {
+    const response = await fetch(`${import.meta.env.VITE_PORT}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,10 +23,11 @@ export const Register = () => {
       }),
     });
     setLoading(false);
-    console.log("loading false");
 
     if (response.status === 200) {
       toast.success("Registation successful");
+
+      <Navigate to="/login" />;
     } else {
       toast.error("Register failed");
     }

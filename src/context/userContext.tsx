@@ -13,7 +13,7 @@ interface UserContextValue {
   setUserInfo: React.Dispatch<React.SetStateAction<null>>;
 
   username: string | undefined;
-  setUsername: React.Dispatch<React.SetStateAction<string>>;
+  setUsername: React.Dispatch<React.SetStateAction<string>> ;
 }
 
 export const UserContext = createContext<UserContextValue>({
