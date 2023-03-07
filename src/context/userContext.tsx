@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 interface UserInfoProps {
   jwt: string;
@@ -10,16 +9,15 @@ interface UserInfoProps {
 
 interface UserContextValue {
   userInfo: UserInfoProps | null;
-  setUserInfo: React.Dispatch<React.SetStateAction<null>>;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfoProps | null>>;
 
-  username: string | undefined;
-  setUsername: React.Dispatch<React.SetStateAction<string>> ;
+  username: string;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const UserContext = createContext<UserContextValue>({
   userInfo: null,
   setUserInfo: () => {},
-
   username: "",
   setUsername: () => {},
 });
@@ -29,7 +27,7 @@ interface UserContextProps {
 }
 
 export default function UserContextProvider({ children }: UserContextProps) {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState<UserInfoProps | null>(null);
   const [username, setUsername] = useState("");
 
   return (

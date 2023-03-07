@@ -20,14 +20,20 @@ export const App = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_PORT}/profile`, {
-      credentials: "include",
-    }).then((response) => {
-      response.json().then((informations) => {
-        setUserInfo(informations);
+    async function verifyUser() {
+      const response = await fetch(`${import.meta.env.VITE_PORT}/profile`, {
+        credentials: "include",
       });
-    });
-  }, []);
+
+      const data = await response.json();
+
+      if (data?.user) {
+        setUserInfo(data.user);
+      }
+    }
+
+    verifyUser();
+  }, [setUserInfo]);
 
   return (
     <>

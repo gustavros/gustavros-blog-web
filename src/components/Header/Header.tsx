@@ -10,7 +10,9 @@ export const Header = () => {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_PORT}/profile`, {
       credentials: "include",
+      
     }).then((response) => {
+
       response.json().then((user) => {
         setUserInfo(user);
         setUsername(user.username);
@@ -19,12 +21,16 @@ export const Header = () => {
   }, [userInfo?.username]);
 
   function logout() {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    fetch(`${import.meta.env.VITE_PORT}/logout`, {
+      credentials: "include",
+    }).then((response) => {
+      if (response.status === 200) {
+        setUserInfo(null);
+        setUsername("");
+      }
+    });
 
-    setUserInfo(null);
-    setUsername("");
-
-    window.location.href = "/";
+    console.log(userInfo?.username);
   }
 
   return (
